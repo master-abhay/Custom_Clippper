@@ -21,8 +21,8 @@ class _HomeViewState extends State<HomeView> {
       child: ClipPath(
         clipper: myClipper(),
         child: Container(
-          width: 350,
-          height: 120,
+          width: 200,
+          height: 200,
           color: Colors.grey.shade600,
         ),
       ),
@@ -39,11 +39,32 @@ class myClipper extends CustomClipper<Path> {
     //arcToPoint: two type of radius we can process: 1) elliptical 2) circular(radius)
     double radius = 15;
 
+    path
+      ..addRect(Rect.fromPoints(
+          Offset(0, 0), Offset(size.width - 100, size.height - 100)))
+      ..addRect(Rect.fromLTWH(0, size.height - 50, 50, 50))
+      ..addRect(Rect.fromCircle(
+          center: Offset(size.width / 2, size.height / 2), radius: 20))
+      ..close();
 
     ////Example 3: arcTo: it uses Rect,startAngle, sweepAngle, clockwise?
 
-
-
+    //unable to understand the start and sweep angles:
+    // path
+    //    ..lineTo(size.width - radius, 0)
+    //    ..arcTo(
+    //        Rect.fromPoints(
+    //            Offset(size.width - radius, 0), Offset(size.width, radius)), // Rect
+    //        1.5 * pi,   // Start engle
+    //        0.5 * pi,  // Sweep engle
+    //        true)  // direction clockwise
+    //    ..lineTo(size.width, size.height - radius)
+    //    ..arcTo(Rect.fromCircle(center: Offset(size.width - radius, size.height - radius), radius: radius), 0, 0.5 * pi, false)
+    //    ..lineTo(radius, size.height)
+    //    ..arcTo(Rect.fromLTRB(0, size.height - radius, radius, size.height), 0.5 * pi, 0.5 * pi, false)
+    //    ..lineTo(0, radius)
+    //    ..arcTo(Rect.fromLTWH(0, 0, 70, 100), 1 * pi, 0.5 * pi, false)
+    //    ..close();
 
 // ////Example 2 for Radigone Project: Coupon shape Created wow;;;;;
 //     path
